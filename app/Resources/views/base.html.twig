@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}IPROD{% endblock %}</title>
+        {% stylesheets '../app/Resources/public/css/*' filter='cssrewrite' output="bundles/css/style.css" %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+            <link rel="stylesheet" href={{ asset_url }} type="text/css" />
+        {% endstylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script>
+            function goBack() {
+                window.history.back()
+            }
+        </script>
+    </head>
+    <body>
+        {% block body %}
+        <div class="home_main_container">
+            {% for function in functionalities %}
+                <a class="col-xs-12" href="{{ function.route}}">
+                    <button type="button" class="btn homeBtn" style="background-color: {{ function.color }}; background-image: url({{ function.iconPath }})">
+                       <div class="place">{{ function.name }} </div>
+                    </button>
+                </a>
+            {% endfor %}
+            {%  block other %}
+                    <a class="col-xs-6 no-padding" href="{{ settings.route}}">
+                        <button type="button" class="btn homeBtn" style="background-color: {{ settings.color }}; background-image: url({{ settings.iconPath }})">
+                            <div class="settings">{{ settings.name }} </div>
+                        </button>
+                    </a>
+                    <a class="col-xs-6" href="{{ emergency.route}}">
+                        <button type="button" class="btn homeBtn" style="background-color: {{ emergency.color }}; background-image: url({{ emergency.iconPath   }})">
+                            <div class="emergency">{{ emergency.name }} </div>
+                        </button>
+                    </a>
+            {% endblock %}
+        </div>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

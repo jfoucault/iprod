@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% block content %}
+        <div class="place_main_container">
+            {% for room in rooms %}
+                <a class="col-xs-6" href="{{ room.route}}">
+                    <button type="button" class="btn buttonFctn" style="background-color: {{ room.color }}; background-image: url({{ room.iconPath }})">
+                        <div class="roomName">{{ room.name }} </div>
+                    </button>
+                </a>
+            {% endfor %}
+        </div>
+    {% endblock %}
+    {% block backBand %}
+        <div class="backBand">
+            <button onclick="goBack()" class="btn btnBand" style="background-image: url(./images/arrowBack.png)">Page d'accueil</button>
+        </div>
+    {% endblock %}
+{% endblock %}

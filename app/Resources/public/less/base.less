@@ -1,0 +1,46 @@
+
+@pastelrose: #ffbabc;
+@pastelred: #d48286;
+@pastelblue: #caf3f5;
+@pastelcleargreen: #b0d4c8;
+@pastelgreen: #8bbab4;
+@grey: #5b5c5e;
+
+html{
+  height: 100%;
+  width: 100%;
+  body{
+    height: 100%;
+    width: 100%;
+    padding: 2.5%;
+    .no-padding{
+      padding:0 ;
+    }
+    .home_main_container {
+      display: inline-block;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      a {
+        border:5px solid white;
+        width:50%;
+        height:50%;
+        padding:0 !important;
+        .homeBtn {
+          width: 100%;
+          height:100%;
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position-x: 50%;
+          background-position-y: 40%;
+          .place, .settings, .emergency{
+            color: @grey;
+            text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+            font-size: 75px;
+            margin-top: 95%
+          }
+        }
+      }
+    }
+  }
+}

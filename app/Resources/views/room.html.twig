@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% block content %}
+        <div class="room_main_container">
+            {% for material in materials %}
+                <div class="element col-xs-12"  style="background-image: url({% if material.type == "light" %} {{asset('images/lightbulb.png')}} {% elseif material.type == "shutter" %} {{asset('images/window.png')}} {%  else  %} {% endif %} )">
+                    <div class="elementName col-xs-9">
+                        {{ material.name }}
+                    </div>
+                    <label class="col-xs-3 switch">
+                        <input type="checkbox" {% if material.state == "active" %} checked {% endif %}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+    {% block backBand %}
+        <div class="backBandLiving">
+            <button onclick="goBack()" class="btn btnBand" style="background-image: url({{ asset('images/arrowBack.png')}})">Retour</button>
+        </div>
+    {% endblock %}
+{% endblock %}

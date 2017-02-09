@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% block content %}
+        <div class="emergency_main_container">
+
+        </div>
+    {% endblock %}
+    {% block backBand %}
+        <div class="backBandLiving">
+            <button onclick="goBack()" class="btn btnBand" style="background-image: url({{ asset('images/arrowBack.png')}})">Retour</button>
+        </div>
+    {% endblock %}
+{% endblock %}

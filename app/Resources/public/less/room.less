@@ -1,0 +1,118 @@
+
+@pastelrose: #ffbabc;
+@pastelred: #d48286;
+@pastelblue: #caf3f5;
+@pastelcleargreen: #b0d4c8;
+@pastelgreen: #8bbab4;
+@pastelyellow: #ecfc71;
+@grey: #5b5c5e;
+
+html{
+  height: 100%;
+  width: 100%;
+  body{
+    height: 100%;
+    width: 100%;
+    padding: 2.5%;
+    .backBandLiving{
+      padding:0;
+      width:100%;
+      height:10%;
+      .btnBand{
+        width:100%;
+        height:100%;
+        background-color: @pastelyellow;
+        color: @grey;
+        text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+        background-repeat: no-repeat;
+        background-position-x: 8%;
+        background-position-y: 50%;
+        background-size: 5%;
+        font-size: 50px;
+      }
+    }
+    .room_main_container{
+      height:90%;
+      width:100%;
+      .element{
+        width: 100%;
+        height:25%;
+        padding:0;
+        color: @grey;
+        font-size: 50px;
+        text-align: center;
+        background-color: #F5F5F5;
+        background-repeat: no-repeat;
+        background-position-y: 50%;
+        background-position-x: 10px;
+        background-size: 10%;
+        border-bottom: 2px solid @grey;
+
+        .elementName{
+          position: relative;
+          top: 40%;
+          left: 5%;
+        }
+        /* The switch - the box around the slider */
+        .switch {
+          position: relative;
+          top:10%;
+          display: inline-block;
+          width: 25%;
+          height: 80%;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {display:none;}
+
+        /* The slider */
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: @pastelred;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 150px;
+          width: 60px;
+          left: 0;
+          bottom: 2px;
+          background-color: #666666;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        input:checked + .slider {
+          background-color: @pastelgreen;
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+          -webkit-transform: translateX(125px);
+          -ms-transform: translateX(125px);
+          transform: translateX(125px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+          border-radius: 5%;
+        }
+
+        .slider.round:before {
+          border-radius: 5%;
+        }
+      }
+    }
+  }
+}

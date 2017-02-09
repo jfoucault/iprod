@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% block content %}
+        <div class="setting_main_container">
+            <a class="col-xs-6 no-padding" href="settings/addEntity">
+                <button type="button" class="btn addBtn" style="background-image: url({{ asset('images/plus.png')}})">
+                    <div class="addEntity">Ajout</div>
+                </button>
+            </a>
+            <a class="col-xs-6" href="settings/deleteEntity">
+                <button type="button" class="btn deleteBtn" style="background-image: url({{ asset('images/minus.png')}})">
+                    <div class="deleteEntity">Suppression</div>
+                </button>
+            </a>
+        </div>
+    {% endblock %}
+    {% block backBand %}
+        <div class="backBandLiving">
+            <button onclick="goBack()" class="btn btnBand" style="background-image: url({{ asset('images/arrowBack.png')}})">Retour</button>
+        </div>
+    {% endblock %}
+{% endblock %}
