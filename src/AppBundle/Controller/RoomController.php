@@ -56,7 +56,7 @@ class RoomController extends Controller
     }
 
     /**
-     * @Route("/house/{room}", name="room")
+     * @Route("/{place}/{room}", name="room")
      */
     public function roomAction($room)
     {
