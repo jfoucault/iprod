@@ -17,10 +17,10 @@
     <body>
         {% block body %}
         <div class="home_main_container">
-            {% for function in functionalities %}
-                <a class="col-xs-12" href="{{ function.route}}">
-                    <button type="button" class="btn homeBtn" style="background-color: {{ function.color }}; background-image: url({{ function.iconPath }})">
-                       <div class="place">{{ function.name }} </div>
+            {% for place in places %}
+                <a class="col-xs-12" href="{{ place.route}}">
+                    <button type="button" class="btn homeBtn" style="background-color: {{ place.color }}; background-image: url({{ place.iconPath }})">
+                       <div class="place">{{ place.name }} </div>
                     </button>
                 </a>
             {% endfor %}

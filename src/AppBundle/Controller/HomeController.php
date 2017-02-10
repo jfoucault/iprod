@@ -19,12 +19,15 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $functionalities = [['name' => 'Hopital','color' => '#ffbabc','route'=> 'hospital', 'iconPath' => "./images/hospital.png"],
-                            ['name' =>'Maison','color' => ' #caf3f5','route'=>'house','iconPath' =>'./images/home.png']];
+
+        $em = $this->getDoctrine();
+
+        $places = $em->getRepository('AppBundle:Place')->findAll();
+
         $settings = ['name' =>'Réglages','color' => '#b0d4c8', 'route'=>'settings', 'iconPath' => './images/settings.png'];
         $emergency = ['name' =>'Urgences','color' => 'red', 'route'=>'emergency', 'iconPath' => './images/emergency.png'];
 
-        return $this->render('base.html.twig', ['emergency'=>$emergency,'settings'=> $settings, 'functionalities' => $functionalities, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        return $this->render('base.html.twig', ['emergency'=>$emergency,'settings'=> $settings, 'places' => $places, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
 
     }

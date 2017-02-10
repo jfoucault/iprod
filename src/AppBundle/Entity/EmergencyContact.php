@@ -2,20 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: fouca
- * Date: 08/02/2017
- * Time: 21:02
+ * Date: 10/02/2017
+ * Time: 17:10
  */
 
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name= "place")
+ * @ORM\Table(name= "emergency_contact")
  */
-class Place
-{
+class EmergencyContact {
 
     /**
      * @ORM\Column(type="integer")
@@ -30,22 +28,22 @@ class Place
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $color;
+    * @ORM\Column(type="string", length=100)
+    */
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $route;
+    private $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $iconPath;
+    private $address;
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
@@ -53,7 +51,7 @@ class Place
     }
 
     /**
-     * @param int $id
+     * @param mixed $id
      */
     public function setId($id)
     {
@@ -61,7 +59,7 @@ class Place
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getName()
     {
@@ -69,7 +67,7 @@ class Place
     }
 
     /**
-     * @param string $name
+     * @param mixed $name
      */
     public function setName($name)
     {
@@ -79,49 +77,49 @@ class Place
     /**
      * @return mixed
      */
-    public function getColor()
+    public function getFirstName()
     {
-        return $this->color;
+        return $this->firstName;
     }
 
     /**
-     * @param mixed $color
+     * @param mixed $firstName
      */
-    public function setColor($color)
+    public function setFirstName($firstName)
     {
-        $this->color = $color;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRoute()
-    {
-        return $this->route;
-    }
-
-    /**
-     * @param mixed $route
-     */
-    public function setRoute($route)
-    {
-        $this->route = $route;
+        $this->firstName = $firstName;
     }
 
     /**
      * @return mixed
      */
-    public function getIconPath()
+    public function getPhoneNumber()
     {
-        return $this->iconPath;
+        return $this->phoneNumber;
     }
 
     /**
-     * @param mixed $iconPath
+     * @param mixed $phoneNumber
      */
-    public function setIconPath($iconPath)
+    public function setPhoneNumber($phoneNumber)
     {
-        $this->iconPath = $iconPath;
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
     }
 
 }

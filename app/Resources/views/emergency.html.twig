@@ -2,7 +2,13 @@
 {% block body %}
     {% block content %}
         <div class="emergency_main_container">
+            {% for contact in data %}
+                <button type="button" class="btn">
+                    <div class="contactName">{{contact.name}}</div>
+                    <div class="contactNumber">{{ contact.phoneNumber }}</div>
 
+                </button>
+            {% endfor %}
         </div>
     {% endblock %}
     {% block backBand %}
