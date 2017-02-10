@@ -10,38 +10,28 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class PlaceController extends Controller
 {
-
-    private function getRooms($place){
-
-        $em = $this->getDoctrine();
-
-        if ($place == 'hospital')
-        {
-            $data = $em->getRepository('AppBundle:Room')->findBy(array('place' => 1));
-        }
-        elseif ($place == 'house')
-        {
-            $data = $em->getRepository('AppBundle:Room')->findBy(array('place' => 2));
-        }
-        else
-        {
-            throw $this->createNotFoundException('Le lieu '.$place.' n\'existe pas en base');
-        }
-
-        return $data;
-    }
     /**
-     * @Route("/{place}", name="housepage")
+     * @Route("/hospital", name="hospital")
      */
-    public function appChoiceAction($place)
+    public function hospitalAction()
     {
-        $rooms = $this->getRooms($place);
+        $em = $this->getDoctrine();
+        $data = $em->getRepository('AppBundle:Room')->findBy(array('place' => 1));
+        return $this->render('place.html.twig', ['data' => $data, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        ]);
+    }
 
-        return $this->render('place.html.twig', ['rooms' => $rooms, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+    /**
+     * @Route("/house", name="hospital")
+     */
+    public function houseAction()
+    {
+        $em = $this->getDoctrine();
+        $data = $em->getRepository('AppBundle:Room')->findBy(array('place' => 2));
+        return $this->render('place.html.twig', ['data' => $data, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
 }

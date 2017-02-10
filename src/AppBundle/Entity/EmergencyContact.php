@@ -2,20 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: fouca
- * Date: 08/02/2017
- * Time: 21:02
+ * Date: 10/02/2017
+ * Time: 17:10
  */
 
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name= "object")
+ * @ORM\Table(name= "emergency_contact")
  */
-class Object
-{
+class EmergencyContact {
 
     /**
      * @ORM\Column(type="integer")
@@ -30,20 +28,19 @@ class Object
     private $name;
 
     /**
+    * @ORM\Column(type="string", length=100)
+    */
+    private $firstName;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
-    private $type;
+    private $phoneNumber;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=100)
      */
-    private $isOpen;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Room")
-     * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
-     */
-    private $room;
+    private $address;
 
     /**
      * @return mixed
@@ -80,49 +77,49 @@ class Object
     /**
      * @return mixed
      */
-    public function getIsOpen()
+    public function getFirstName()
     {
-        return $this->isOpen;
+        return $this->firstName;
     }
 
     /**
-     * @param mixed $isOpen
+     * @param mixed $firstName
      */
-    public function setIsOpen($isOpen)
+    public function setFirstName($firstName)
     {
-        $this->isOpen = $isOpen;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRoom()
-    {
-        return $this->room;
-    }
-
-    /**
-     * @param mixed $room
-     */
-    public function setRoom($room)
-    {
-        $this->room = $room;
+        $this->firstName = $firstName;
     }
 
     /**
      * @return mixed
      */
-    public function getType()
+    public function getPhoneNumber()
     {
-        return $this->type;
+        return $this->phoneNumber;
     }
 
     /**
-     * @param mixed $type
+     * @param mixed $phoneNumber
      */
-    public function setType($type)
+    public function setPhoneNumber($phoneNumber)
     {
-        $this->type = $type;
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
     }
 
 }

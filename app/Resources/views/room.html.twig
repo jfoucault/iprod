@@ -8,7 +8,7 @@
                         {{ material.name }}
                     </div>
                     <label class="col-xs-3 switch">
-                        <input type="checkbox" {% if material.state == "active" %} checked {% endif %}>
+                        <input type="checkbox" {% if material.isOpen %} checked {% endif %}>
                         <div class="slider round"></div>
                     </label>
                 </div>

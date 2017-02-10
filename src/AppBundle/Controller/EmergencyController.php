@@ -2,25 +2,26 @@
 /**
  * Created by PhpStorm.
  * User: fouca
- * Date: 09/02/2017
- * Time: 09:57
+ * Date: 06/02/2017
+ * Time: 14:44
  */
 
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class EmergencyController extends Controller
 {
     /**
-     * @Route("/emergency", name="emergency")
+     * @Route("/emergency", name="placepage")
      */
-    public function emergencyAction(Request $request)
+    public function appChoiceAction()
     {
-        return $this->render('emergency.html.twig', ['base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
+        $em = $this->getDoctrine();
+        $data = $em->getRepository('AppBundle:EmergencyContact')->findAll();
 
+        return $this->render('emergency.html.twig', ['data' => $data, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        ]);
     }
 }

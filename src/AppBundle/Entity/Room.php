@@ -45,6 +45,11 @@ class Room
     private $iconPath;
 
     /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $type;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Place")
      * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
@@ -144,6 +149,22 @@ class Room
     public function setIconPath($iconPath)
     {
         $this->iconPath = $iconPath;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
 

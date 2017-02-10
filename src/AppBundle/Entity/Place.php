@@ -29,6 +29,20 @@ class Place
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $color;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $route;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $iconPath;
 
     /**
      * @return int
@@ -60,6 +74,54 @@ class Place
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param mixed $color
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * @param mixed $route
+     */
+    public function setRoute($route)
+    {
+        $this->route = $route;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIconPath()
+    {
+        return $this->iconPath;
+    }
+
+    /**
+     * @param mixed $iconPath
+     */
+    public function setIconPath($iconPath)
+    {
+        $this->iconPath = $iconPath;
     }
 
 }

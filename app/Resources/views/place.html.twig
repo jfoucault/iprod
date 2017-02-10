@@ -2,8 +2,8 @@
 {% block body %}
     {% block content %}
         <div class="place_main_container">
-            {% for room in rooms %}
-                <a class="col-xs-6" href="{{ room.route}}">
+            {% for room in data %}
+                <a class="col-xs-6" href="materiel/{{ room.route}}">
                     <button type="button" class="btn buttonFctn" style="background-color: {{ room.color }}; background-image: url({{ room.iconPath }})">
                         <div class="roomName">{{ room.name }} </div>
                     </button>
