@@ -7,7 +7,7 @@
                     <div class="elementName col-xs-9">
                         {{ material.name }}
                     </div>
-                    <label class="col-xs-3 switch">
+                    <label class="col-xs-3 switch" onclick="{{ statehandler.changeState(material.id) }}">
                         <input type="checkbox" {% if material.isOpen %} checked {% endif %}>
                         <div class="slider round"></div>
                     </label>

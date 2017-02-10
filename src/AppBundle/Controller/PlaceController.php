@@ -25,7 +25,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * @Route("/house", name="hospital")
+     * @Route("/house", name="house")
      */
     public function houseAction()
     {
