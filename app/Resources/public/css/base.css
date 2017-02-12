@@ -31,10 +31,14 @@ html body .home_main_container a .homeBtn {
   background-position-y: 40%;
 }
 html body .home_main_container a .homeBtn .place,
-html body .home_main_container a .homeBtn .settings,
-html body .home_main_container a .homeBtn .emergency {
+html body .home_main_container a .homeBtn .settings {
   color: #5b5c5e;
   text-shadow: -2px 0 #ffffff, 0 2px #ffffff, 2px 0 #ffffff, 0 -2px #ffffff;
+  font-size: 75px;
+  margin-top: 95%;
+}
+html body .home_main_container a .homeBtn .emergency {
+  color: white;
   font-size: 75px;
   margin-top: 95%;
 }

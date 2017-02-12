@@ -15,9 +15,9 @@ html body .backBandLiving {
 html body .backBandLiving .btnBand {
   width: 100%;
   height: 100%;
-  background-color: #ecfc71;
-  color: #5b5c5e;
-  text-shadow: -3px 0 #ffffff, 0 3px #ffffff, 3px 0 #ffffff, 0 -3px #ffffff;
+  background-color: #719aed;
+  color: white;
+  text-shadow: -3px 0 #5b5c5e, 0 3px #5b5c5e, 3px 0 #5b5c5e, 0 -3px #5b5c5e;
   background-repeat: no-repeat;
   background-position-x: 8%;
   background-position-y: 50%;
