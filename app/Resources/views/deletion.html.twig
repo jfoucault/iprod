@@ -2,35 +2,12 @@
 {% block body %}
     {% block content %}
         <div class="deletion_main_container">
-            <div class="placeDLTmenu">
-               {% for place in places %}
-                   <div class="placeDLTwrapper">
-                       <div class="placeName">
-                           <div class="binIcon" style="background-image: url({{ asset('images/bin.png')}})">
-                               <a href="{{ place.id }}" >{{place.name}}</a>
-                           </div>
-                       </div>
-                       {% for room in rooms %}
-                           {% if room.place.id == place.id %}
-                               <div class="roomDLTwrapper">
-                                   <div class="roomName" >
-                                       <div class="binIcon" style="background-image: url({{ asset('images/bin.png')}})">
-                                           <a href="{{ room.id }}">{{ room.name }}</a>
-                                       </div>
-                                   </div>
-                                   {% for object in objects %}
-                                       {% if object.room.id == room.id %}
-                                        <div class="objectDLTwrapper">
-                                           <a href="{{ object.id }}" >{{ object.name }}</a>
-                                        </div>
-                                       {% endif %}
-                                   {% endfor %}
-                               </div>
-                            {% endif %}
-                       {% endfor %}
+            {% for data in data %}
+                   <div class="objectDLTwrapper">
+                       <a href="{{ data['Place'] }}" >{{ data['Place'] }}</a>
                    </div>
-               {% endfor %}
-            </div>
+            {% endfor %}
+        </div>
     {% endblock %}
     {% block backBand %}
         <div class="backBandLiving">

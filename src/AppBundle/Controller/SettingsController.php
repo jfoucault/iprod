@@ -23,21 +23,59 @@ class SettingsController extends Controller
     }
 
     /**
+     * Récupère la liste des lieux qui ont des pièces
+     * @return array
+     */
+    public function getUnemptyEntities($entity, $component){
+
+        $em = $this->getDoctrine();
+        $mng = $em->getManager();
+
+        $listEntities = $mng->createQuery('SELECT p FROM AppBundle:'.$entity.' p')->getResult();
+        $index = -1;
+        foreach ($listEntities as $element){
+            $index++;
+            $nbcomp = $mng->createQuery('SELECT count(c) FROM AppBundle:'.$component.' c WHERE c.'.strtolower($entity).' ='.$element->getId())->getResult();
+
+            if ( $nbcomp[0][1] == 0){array_splice($listEntities,$index,1);}
+        }
+        return $listEntities;
+    }
+
+    public function getObjectsInRoom($roomId, $listObjects){
+
+        $tab = array();
+        foreach ($listObjects as $obj) {
+            if($obj->getRoom()->getId() == $roomId){array_push($tab, ['ObjectId'=> $obj->getId(),'ObjectName' => $obj->getName()]);}
+        }
+
+        return $tab;
+    }
+
+    public function getRoomsInPlace($placeId, $listRooms, $listObjects){
+
+        $tab = array();
+        foreach ($listRooms as $room) {
+            if($room->getPlace()->getId() == $placeId){array_push($tab, ['Room'=>$room,'Objects'=>$this->getObjectsInRoom($room->getId(), $listObjects)]);}
+        }
+
+        return $tab;
+    }
+    /**
      * @Route("/settings/deleteEntity", name="ChoiceForDeletion")
      */
     public function entityChoiceAction()
     {
-        $em = $this->getDoctrine();
-        $places = $em->getRepository('AppBundle:Place')->findAll();
-        $rooms = $em->getRepository('AppBundle:Room')->findAll();
-        $materials = $em->getRepository('AppBundle:Object')->findAll();
+        $places = $this->getUnemptyEntities('Place','Room');
+        $rooms = $this->getUnemptyEntities('Room','Object');
+        $materials = $this->getDoctrine()->getManager()->getRepository('AppBundle:Object')->findAll();
 
-        return $this->render('deletion.html.twig',
-                             ['places'=>$places,
-                              'objects' => $materials,
-                              'rooms' => $rooms,
-                              'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
+        $data = array();
+        foreach ($places as $place){
+            array_push($data, ['Place'=>$place->getName(), 'Rooms' => $this->getRoomsInPlace($place->getId(), $rooms, $materials)]);
+        }
+        var_dump($data);
+        return $this->render('deletion.html.twig',['data'=>$data, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,]);
     }
 
     /**
