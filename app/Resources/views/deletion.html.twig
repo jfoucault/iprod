@@ -3,8 +3,22 @@
     {% block content %}
         <div class="deletion_main_container">
             {% for data in data %}
-                   <div class="objectDLTwrapper">
-                       <a href="{{ data['Place'] }}" >{{ data['Place'] }}</a>
+                   <div class="placeDLTwrapper">
+                       <a href="deleteEntity/Place/{{ data['PlaceId'] }}" >{{ data['Place'] }}</a>
+                       {% for room in data['Rooms'] %}
+                           <div class="roomDLTwrapper">
+                               <a href="deleteEntity/Room/{{ room.Room.id }}">
+                                    {{ room.Room.name }}
+                                </a>
+                               {% for object in room.Objects %}
+                                   <div class="objectDLTwrapper">
+                                       <a href="deleteEntity/Object/{{ object['ObjectId'] }}">
+                                           {{ object['ObjectName'] }}
+                                       </a>
+                                   </div>
+                               {% endfor %}
+                           </div>
+                       {% endfor %}
                    </div>
             {% endfor %}
         </div>

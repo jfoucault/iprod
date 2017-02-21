@@ -50,7 +50,7 @@ class Room
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Place")
+     * @ORM\ManyToOne(targetEntity="Place",cascade={"remove"})
      * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
     private $place;

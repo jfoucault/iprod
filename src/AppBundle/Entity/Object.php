@@ -40,7 +40,7 @@ class Object
     private $isOpen;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Room")
+     * @ORM\ManyToOne(targetEntity="Room", cascade={"remove"})
      * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
      */
     private $room;

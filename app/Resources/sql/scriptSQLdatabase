@@ -1,0 +1,42 @@
+INSERT INTO `place`(`name`, `color`, `route`, `icon_path` VALUES ("Hopital","#ffbabc","/hospital", "./public/images/hospital.png");
+INSERT INTO `place`(`name`, `color`, `route`, `icon_path`) VALUES ("Maison","#caf3f5","/home", "./public/images/home.png");
+
+
+
+INSERT INTO `room`(`place_id`, `name`, `color`, `route`, `icon_path`,`type`) VALUES (1,"Chambre","#ffbabc","bedroom","./images/bedroom.png","");
+INSERT INTO `room`(`place_id`, `name`, `color`, `route`, `icon_path`,`type`) VALUES (1,"Salle de bain","#465eb6","bathroom","./images/bathroom.png","");
+
+
+INSERT INTO `room`(`place_id`, `name`, `color`, `route`, `icon_path`,`type`) VALUES (2,"Chambre","#ffbabc","bedroom","./images/bedroom.png","");
+INSERT INTO `room`(`place_id`, `name`, `color`, `route`, `icon_path`,`type`) VALUES (2,"Salon","#f9a866","livingroom","./images/livingroom.png","");
+INSERT INTO `room`(`place_id`, `name`, `color`, `route`, `icon_path`,`type`) VALUES (2,"Cuisine","#6a3b00","kitchen","./images/kitchen.png","");
+INSERT INTO `room`(`place_id`, `name`, `color`, `route`, `icon_path`,`type`) VALUES (2,"Salle de bain","#465eb6","bathroom","./images/bathroom.png","");
+
+
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (1,"plafonnier","shutter",true);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (1,"lampe","light",false);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (1,"volet","light",true);
+
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (2,"plafonnier","light",false);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (2,"spot miroir","light",true);
+
+
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (3,"plafonnier","light",false);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (3,"lampe","light",false);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (3,"volet","shutter",false);
+
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (4,"plafonnier","light",true);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (4,"lampe","light",true);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (4,"spot bibliothèque","light",false);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (4,"volet gauche","shutter",true);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (4,"volet droit","shutter",false);
+
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (5,"plafonnier","light",false);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (5,"hotte","light",true);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (5,"volet","shutter",false);
+
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (6,"plafonnier","light",true);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (6,"spot miroir","light",true);
+INSERT INTO `object`(`room_id`, `name`, `type`, `is_open`) VALUES (6,"volet","shutter",false);
+
+

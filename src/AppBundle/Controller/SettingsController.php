@@ -72,25 +72,23 @@ class SettingsController extends Controller
 
         $data = array();
         foreach ($places as $place){
-            array_push($data, ['Place'=>$place->getName(), 'Rooms' => $this->getRoomsInPlace($place->getId(), $rooms, $materials)]);
+            array_push($data, ['Place'=>$place->getName(), 'PlaceId'=>$place->getId(),'Rooms' => $this->getRoomsInPlace($place->getId(), $rooms, $materials)]);
         }
-        var_dump($data);
         return $this->render('deletion.html.twig',['data'=>$data, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,]);
     }
 
     /**
      * @param $id
-     * @Route("/settings/deleteEntity/{id}", name="deleteRoute")
+     * @Route("/settings/deleteEntity/{type}/{id}", name="deleteRoute")
      */
-    public function deleteAction($id)
+    public function deleteAction($type, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:Object')->findBy(array('id' => $id));
-
-        $em->remove($object[0]);
+        $entity = $em->getRepository('AppBundle:'.$type)->findBy(array('id' => $id));
+        $em->remove($entity[0]);
         $em->flush();
-        $message = 'L\'élément '.$object[0]->getName().' a bien été supprimé.';
+        $message = 'L\'élément '.$entity[0]->getName().' a bien été supprimé.';
         return $this->render('infos.html.twig', [ 'message'=> $message, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-    ]);;
+    ]);
     }
 }
