@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class RoomController extends Controller
 {
@@ -31,5 +32,27 @@ class RoomController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/ajax/my/service", name="StateUpdateService")
+     */
+    public function stateAction(Request $request){
+        if ($request->getMethod() !== "POST") {
+            throw $this->createNotFoundException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $object_id = $_POST['object_id'];
+
+        $object = $em->getRepository('AppBundle:Object')->findBy(array('id' => $object_id));
+
+        $currentState = $object[0]->getIsOpen();
+        $object[0]->setIsOpen(!$currentState);
+
+        $em->persist($object[0]);
+
+        $em->flush();
+
+        return new Response('nouvelle valeur : '. $object[0]->getIsOpen());
+    }
 
 }

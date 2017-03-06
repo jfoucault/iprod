@@ -3,14 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}IPROD{% endblock %}</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         {% stylesheets '../app/Resources/public/css/*' filter='cssrewrite' output="bundles/css/style.css" %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
             <link rel="stylesheet" href={{ asset_url }} type="text/css" />
         {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <script>
+        <script type="text/javascript" >
             function goBack() {
                 window.history.back()
+            }
+            function stateHandler(id) {
+                $.ajax({
+                    type:'POST',
+                    url:"{{path('StateUpdateService')}}",
+                    data:{ 'object_id': id}
+                });
             }
         </script>
     </head>
@@ -38,6 +46,8 @@
             {% endblock %}
         </div>
         {% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+
+        {% endblock %}
     </body>
 </html>

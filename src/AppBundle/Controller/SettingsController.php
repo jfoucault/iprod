@@ -78,6 +78,7 @@ class SettingsController extends Controller
     }
 
     /**
+     * Change the state in database
      * @param $id
      * @Route("/settings/deleteEntity/{type}/{id}", name="deleteRoute")
      */

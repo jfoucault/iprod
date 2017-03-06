@@ -7,9 +7,9 @@
                     <div class="elementName col-xs-9">
                         {{ material.name }}
                     </div>
-                    <label class="col-xs-3 switch" onclick="{{ statehandler.changeState(material.id) }}">
+                    <label class="col-xs-3 switch" >
                         <input type="checkbox" {% if material.isOpen %} checked {% endif %}>
-                        <div class="slider round"></div>
+                        <span class="slider round" onclick="stateHandler({{ material.id }})"></span>
                     </label>
                 </div>
             {% endfor %}
@@ -20,4 +20,5 @@
             <button onclick="goBack()" class="btn btnBand" style="background-image: url({{ asset('images/arrowBack.png')}})">Retour</button>
         </div>
     {% endblock %}
+
 {% endblock %}
