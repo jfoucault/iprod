@@ -3,19 +3,19 @@
     {% block content %}
         <div class="deletion_main_container">
             {% for data in data %}
-                   <div class="placeDLTwrapper">
-                       <a href="deleteEntity/Place/{{ data['PlaceId'] }}" >{{ data['Place'] }}</a>
-                       {% for room in data['Rooms'] %}
-                           <div class="roomDLTwrapper">
-                               <a href="deleteEntity/Room/{{ room.Room.id }}">
-                                    {{ room.Room.name }}
-                                </a>
+                <div class="titlePlace">{{ data['Place'] }}</div>
+                <div class="placeDLTwrapper">
+                    {% for room in data['Rooms'] %}
+                        <div class="roomDLTwrapper">
+                               <div class="titleRoom"> Modules dans {{ room.Room.name }} </div>
                                {% for object in room.Objects %}
-                                   <div class="objectDLTwrapper">
-                                       <a href="deleteEntity/Object/{{ object['ObjectId'] }}">
-                                           {{ object['ObjectName'] }}
-                                       </a>
-                                   </div>
+                               <div class="objectDLTwrapper" >
+                                   <a href="deleteEntity/Object/{{ object['ObjectId'] }}">
+                                       <button type="button" class="btn deletionButton" style="background-image: url({{ asset('images/bin.png')}})">
+                                           <div class="deleteEntity">{{ object['ObjectName'] }}</div>
+                                       </button>
+                                   </a>
+                               </div>
                                {% endfor %}
                            </div>
                        {% endfor %}

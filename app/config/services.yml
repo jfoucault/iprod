@@ -5,5 +5,5 @@ parameters:
 
 services:
     statehandler:
-        class: AppBundle\Service\StateHandler
+        class: AppBundle\Controller\RoomController
         arguments: ['@doctrine.orm.entity_manager',"id",]
