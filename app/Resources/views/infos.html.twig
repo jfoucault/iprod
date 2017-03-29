@@ -1,13 +1,12 @@
 {% extends "base.html.twig" %}
 {% block body %}
     {% block content %}
-        <div class="message_main_container">
-           {{ message }}
-        </div>
-    {% endblock %}
-    {% block backBand %}
-        <div class="backBandLiving">
-            <button onclick="goBack()" class="btn btnBand" style="background-image: url({{ asset('images/arrowBack.png')}})">Retour</button>
+        <div class="message_main_container" style="height: 100%;width: 100%; text-align: center">
+            <a href={{ path('ChoiceForDeletion')}}>
+                <button type="button" class="btn" style="height: 100%;width: 100%; background-color: #aacd4e; background-size: 80%; background-position-x: 50%; background-repeat: no-repeat;background-position-y:30%; background-image: url({{ asset('images/okIcon.png')}})">
+                    <div class="deleteEntity" style="padding-top: 75%; color: white; font-size: xx-large;">{{ message }}</div>
+                </button>
+            </a>
         </div>
     {% endblock %}
 {% endblock %}

@@ -16,7 +16,9 @@
     {% endblock %}
     {% block backBand %}
         <div class="backBandLiving">
-            <button onclick="goBack()" class="btn btnBand" style="background-image: url({{ asset('images/arrowBack.png')}})">Retour</button>
+            <a href="{{ path('homepage') }}">
+                <button class="btn btnBand" style="background-image: url(./images/arrowBack.png)">Page d'accueil</button>
+            </a>
         </div>
     {% endblock %}
 {% endblock %}

@@ -27,8 +27,7 @@ class RoomController extends Controller
         $em = $this->getDoctrine();
         $room = $em->getRepository('AppBundle:Room')->findBy(array('route'=>$place.'/'.$room));
         $materials = $this->getMaterialListByRoom($room[0]->getId());
-
-        return $this->render('Room.html.twig', ['materials' => $materials, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        return $this->render('Room.html.twig', ['place' => $place,'materials' => $materials, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
 

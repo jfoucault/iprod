@@ -40,7 +40,12 @@ class Object
     private $isOpen;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Room", cascade={"remove"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $objectIP;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Room")
      * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
      */
     private $room;
@@ -107,6 +112,22 @@ class Object
     public function setRoom($room)
     {
         $this->room = $room;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getObjectIP()
+    {
+        return $this->objectIP;
+    }
+
+    /**
+     * @param mixed $objectIP
+     */
+    public function setObjectIP($objectIP)
+    {
+        $this->objectIP = $objectIP;
     }
 
     /**

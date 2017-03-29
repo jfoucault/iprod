@@ -8,8 +8,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Object;
+use AppBundle\Entity\Room;
+use AppBundle\Form\ObjectType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class SettingsController extends Controller
 {
@@ -56,7 +60,8 @@ class SettingsController extends Controller
 
         $tab = array();
         foreach ($listRooms as $room) {
-            if($room->getPlace()->getId() == $placeId){array_push($tab, ['Room'=>$room,'Objects'=>$this->getObjectsInRoom($room->getId(), $listObjects)]);}
+            if($room->getPlace()->getId() == $placeId && !empty($this->getObjectsInRoom($room->getId(), $listObjects)))
+            {array_push($tab, ['Room'=>$room,'Objects'=>$this->getObjectsInRoom($room->getId(), $listObjects)]);}
         }
 
         return $tab;
@@ -72,7 +77,9 @@ class SettingsController extends Controller
 
         $data = array();
         foreach ($places as $place){
-            array_push($data, ['Place'=>$place->getName(), 'PlaceId'=>$place->getId(),'Rooms' => $this->getRoomsInPlace($place->getId(), $rooms, $materials)]);
+            if( !empty($this->getRoomsInPlace($place->getId(), $rooms, $materials))){
+                array_push($data, ['Place'=>$place->getName(), 'PlaceId'=>$place->getId(),'Rooms' => $this->getRoomsInPlace($place->getId(), $rooms, $materials)]);
+            }
         }
         return $this->render('deletion.html.twig',['data'=>$data, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,]);
     }
@@ -89,7 +96,40 @@ class SettingsController extends Controller
         $em->remove($entity[0]);
         $em->flush();
         $message = 'L\'élément '.$entity[0]->getName().' a bien été supprimé.';
-        return $this->render('infos.html.twig', [ 'message'=> $message, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-    ]);
+        return $this->render('infos.html.twig', [ 'message'=> $message, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,]);
     }
+
+    /**
+     * Formulaire d'ajout d'un module
+     * @Route("/settings/addEntity", name="addEntity")
+     */
+    public function addEntityAction(Request $request){
+        /*Build the form*/
+        $object = new Object();
+        $form = $this->createForm(ObjectType::class, $object);
+
+        /*Handle the request*/
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $room = new Room();
+
+            $object->setName('test');
+            $object->setIsOpen(0);
+            $object->setObjectIP('IP');
+            $object->setType('light');
+            $object->setRoom($room);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($object);
+            $em->flush();
+
+            var_dump($request);
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('addition.html.twig', array('form' => $form->createView()));
+    }
+
+
 }

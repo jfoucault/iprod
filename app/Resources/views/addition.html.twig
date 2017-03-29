@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    {% block content %}
+        <form name="formObject" method="post">
+                <div class="formFields">
+                    <div class="formField">
+                        <label for="formObject_name" class="required">Nom : </label>
+                        <input type="text" id="formObject_name" name="formObject[name]" required="required">
+                    </div>
+                    <div class="formField">
+                        <label for="formObject_objectIP" class="required">N° IP : </label>
+                        <input type="text" id="formObject_objectIP" name="formObject[objectIP]" required="required">
+                    </div>
+                    <div class="formField">
+                        <label for="formObject_room" class="required">Lieu & Pièce : </label>
+                        <input type="text" id="formObject_room" name="formObject[room]" required="required">
+                    </div>
+                    <div class="formField">
+                        <label for="formObject_type" class="required">Type de matériel : </label>
+                        <input type="text" id="formObject_type" name="formObject[type]" required="required">
+                    </div>
+                </div>
+                <button style="" type="submit">ENREGISTRER</button>
+        </form>
+
+    {% endblock %}
+    {% block backBand %}
+        <div class="backBandLiving">
+            <a href="{{ path('settings') }}">
+                <button class="btn btnBand" style="background-image:  url(../images/arrowBack.png)">Retour</button>
+            </a>
+        </div>
+    {% endblock %}
+{% endblock %}
