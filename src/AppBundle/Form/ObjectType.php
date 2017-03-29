@@ -18,9 +18,10 @@ class ObjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-
         $builder->add('name', TextType::class)
-            ->add('room', IntegerType::class)
+            ->add('room', ChoiceType::class, array(
+                'choices' => array()
+            ))
             ->add('type', TextType::class)
             ->add('objectIP', IntegerType::class);
     }

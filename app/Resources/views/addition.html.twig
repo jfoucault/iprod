@@ -1,26 +1,26 @@
 {% extends "base.html.twig" %}
 {% block body %}
     {% block content %}
-        <form name="formObject" method="post">
+        <form name="form" method="POST">
                 <div class="formFields">
                     <div class="formField">
-                        <label for="formObject_name" class="required">Nom : </label>
-                        <input type="text" id="formObject_name" name="formObject[name]" required="required">
+                        <label for="form_name" class="required">Nom : </label>
+                        <input type="text" id="form_name" name="form[name]" required="required">
                     </div>
                     <div class="formField">
-                        <label for="formObject_objectIP" class="required">N° IP : </label>
-                        <input type="text" id="formObject_objectIP" name="formObject[objectIP]" required="required">
+                        <label for="form_objectIP" class="required">N° IP : </label>
+                        <input type="text" id="form_objectIP" name="form[objectIP]" required="required">
                     </div>
                     <div class="formField">
-                        <label for="formObject_room" class="required">Lieu & Pièce : </label>
-                        <input type="text" id="formObject_room" name="formObject[room]" required="required">
+                        <label for="form_room" class="required">Lieu & Pièce : </label>
+                        {{ form_widget(form.room) }}
                     </div>
                     <div class="formField">
-                        <label for="formObject_type" class="required">Type de matériel : </label>
-                        <input type="text" id="formObject_type" name="formObject[type]" required="required">
+                        <label for="form_type" class="required">Type de matériel : </label>
+                        {{ form_widget(form.type) }}
                     </div>
                 </div>
-                <button style="" type="submit">ENREGISTRER</button>
+                <button type="submit">ENREGISTRER</button>
         </form>
 
     {% endblock %}

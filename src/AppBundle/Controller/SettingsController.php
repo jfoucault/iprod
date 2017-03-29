@@ -13,6 +13,9 @@ use AppBundle\Entity\Room;
 use AppBundle\Form\ObjectType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 
 class SettingsController extends Controller
@@ -104,26 +107,33 @@ class SettingsController extends Controller
      * @Route("/settings/addEntity", name="addEntity")
      */
     public function addEntityAction(Request $request){
+
+        $em = $this->getDoctrine()->getManager();
+        $rooms = $em->getRepository('AppBundle:Room')->findAll();
+
+        $roomsChoices = array();
+        foreach ($rooms as $room){
+            $roomsChoices[$room->getName().' de '.$room->getPlace()->getName()]  = $room->getId();
+        }
         /*Build the form*/
         $object = new Object();
-        $form = $this->createForm(ObjectType::class, $object);
+        $object->setIsOpen(0);
+
+        $form = $this->createFormBuilder($object)
+            ->add('name', TextType::class)
+            ->add('room', ChoiceType::class, array('choices' => $roomsChoices,))
+            ->add('type',  ChoiceType::class, array('choices' => ['Luminaire'=>'light','Volet'=>'shutter']))
+            ->add('objectIP', IntegerType::class)->getForm();
 
         /*Handle the request*/
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
-            $room = new Room();
-
-            $object->setName('test');
-            $object->setIsOpen(0);
-            $object->setObjectIP('IP');
-            $object->setType('light');
-            $object->setRoom($room);
-
+        if ($form->isSubmitted()){
+            $object->setId($object->getObjectIP());
+            $object->setRoom($em->getRepository('AppBundle:Room')->find($object->getRoom()));
+            $object = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($object);
             $em->flush();
-
-            var_dump($request);
 
             return $this->redirectToRoute('homepage');
         }
