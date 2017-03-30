@@ -18,11 +18,11 @@ html body .backBand .btnBand {
   background-color: #ecfc71;
   color: #5b5c5e;
   text-shadow: -3px 0 #ffffff, 0 3px #ffffff, 3px 0 #ffffff, 0 -3px #ffffff;
+  font-size: 75px;
   background-repeat: no-repeat;
   background-position-x: 8%;
   background-position-y: 50%;
   background-size: 5%;
-  font-size: 50px;
 }
 html body .place_main_container {
   overflow: scroll;
@@ -46,8 +46,9 @@ html body .place_main_container a .buttonFctn {
   background-position-y: 50%;
 }
 html body .place_main_container a .buttonFctn .roomName {
-  color: #5b5c5e;
-  text-shadow: -3px 0 #ffffff, 0 3px #ffffff, 3px 0 #ffffff, 0 -3px #ffffff;
-  font-size: 55px;
+  display: none;
+  color: white;
+  text-shadow: -2px 0 #5b5c5e, 0 2px #5b5c5e, 2px 0 #5b5c5e, 0 -2px #5b5c5e;
+  font-size: 75px;
   margin-top: 100%;
 }

@@ -9,7 +9,7 @@
                     </div>
                     <label class="col-xs-3 switch" >
                         <input type="checkbox" {% if material.isOpen %} checked {% endif %}>
-                        <span class="slider round" onclick="stateHandler({{ material.id }})"></span>
+                        <span class="slider round" onclick="stateHandler({{ material.id }},{{ material.objectIP }},{{ material.isOpen }})"></span>
                     </label>
                 </div>
             {% endfor %}

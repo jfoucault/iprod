@@ -27,6 +27,9 @@ class RoomController extends Controller
         $em = $this->getDoctrine();
         $room = $em->getRepository('AppBundle:Room')->findBy(array('route'=>$place.'/'.$room));
         $materials = $this->getMaterialListByRoom($room[0]->getId());
+        foreach ($materials as $material){
+            if ($material->getIsOpen() == NULL){$material->setIsOpen(0);}
+        }
         return $this->render('Room.html.twig', ['place' => $place,'materials' => $materials, 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
@@ -38,7 +41,6 @@ class RoomController extends Controller
         if ($request->getMethod() !== "POST") {
             throw $this->createNotFoundException();
         }
-
         $em = $this->getDoctrine()->getManager();
         $object_id = $_POST['object_id'];
 
@@ -48,7 +50,6 @@ class RoomController extends Controller
         $object[0]->setIsOpen(!$currentState);
 
         $em->persist($object[0]);
-
         $em->flush();
 
         return new Response('nouvelle valeur : '. $object[0]->getIsOpen());

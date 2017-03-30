@@ -1,0 +1,37 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+html body {
+  height: 100%;
+  width: 100%;
+  padding: 2.5%;
+}
+html body .backBandLiving {
+  padding: 0;
+  width: 100%;
+  height: 10%;
+}
+html body .backBandLiving .btnBand {
+  width: 100%;
+  height: 100%;
+  background-color: #719aed;
+  color: white;
+  text-shadow: -3px 0 #5b5c5e, 0 3px #5b5c5e, 3px 0 #5b5c5e, 0 -3px #5b5c5e;
+  background-repeat: no-repeat;
+  background-position-x: 8%;
+  background-position-y: 50%;
+  background-size: 5%;
+  font-size: 75px;
+}
+html body .emergency_main_container {
+  height: 90%;
+  width: 100%;
+}
+html body .emergency_main_container .emergencyBtn {
+  height: 100%;
+  width: 100%;
+  border-radius: 5%;
+  border: 5px solid darkred;
+  color: white;
+}

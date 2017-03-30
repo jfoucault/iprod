@@ -32,8 +32,8 @@ html body .setting_main_container a .addBtn {
   background-position-y: 40%;
 }
 html body .setting_main_container a .addBtn .addEntity {
-  color: #5b5c5e;
-  text-shadow: -2px 0 #ffffff, 0 2px #ffffff, 2px 0 #ffffff, 0 -2px #ffffff;
+  color: white;
+  text-shadow: -2px 0 #5b5c5e, 0 2px #5b5c5e, 2px 0 #5b5c5e, 0 -2px #5b5c5e;
   font-size: 75px;
   margin-top: 50%;
 }
@@ -47,8 +47,8 @@ html body .setting_main_container a .deleteBtn {
   background-position-y: 40%;
 }
 html body .setting_main_container a .deleteBtn .deleteEntity {
-  color: #5b5c5e;
-  text-shadow: -2px 0 #ffffff, 0 2px #ffffff, 2px 0 #ffffff, 0 -2px #ffffff;
+  color: white;
+  text-shadow: -2px 0 #5b5c5e, 0 2px #5b5c5e, 2px 0 #5b5c5e, 0 -2px #5b5c5e;
   font-size: 75px;
   margin-top: 50%;
 }
@@ -67,5 +67,5 @@ html body .backBandLiving .btnBand {
   background-position-x: 8%;
   background-position-y: 50%;
   background-size: 5%;
-  font-size: 50px;
+  font-size: 75px;
 }

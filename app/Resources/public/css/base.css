@@ -28,16 +28,21 @@ html body .home_main_container a .homeBtn {
   background-repeat: no-repeat;
   background-size: 50%;
   background-position-x: 50%;
-  background-position-y: 40%;
+  background-position-y: 50%;
 }
 html body .home_main_container a .homeBtn .place,
 html body .home_main_container a .homeBtn .settings {
-  color: #5b5c5e;
-  text-shadow: -2px 0 #ffffff, 0 2px #ffffff, 2px 0 #ffffff, 0 -2px #ffffff;
+  color: white;
+  text-shadow: -2px 0 #5b5c5e, 0 2px #5b5c5e, 2px 0 #5b5c5e, 0 -2px #5b5c5e;
   font-size: 75px;
   margin-top: 95%;
+  display: none;
+}
+html body .home_main_container a .homeBtn .settings {
+  text-shadow: 0px 0px 15px green;
 }
 html body .home_main_container a .homeBtn .emergency {
+  text-shadow: 0px 0px 15px white;
   color: white;
   font-size: 75px;
   margin-top: 95%;

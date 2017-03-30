@@ -10,11 +10,25 @@
         {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <script type="text/javascript" >
-            function stateHandler(id) {
+            function stateHandler(id, ip, state) {
+                state = !state;
+                if (state == 1){ cmdState = 'On';}
+                if (state == 0){cmdState = 'Off';}
                 $.ajax({
                     type:'POST',
                     url:"{{path('StateUpdateService')}}",
                     data:{ 'object_id': id}
+                });
+
+                $.ajax({
+                    type:'GET',
+                    url:"http://127.0.0.1:8080/json.htm",
+                    data:{'type':'command','param':'switchlight','idx':ip,'switchcmd':cmdState},
+                    success: function(){
+                            setTimeout(function(){// wait for 5 secs(2)
+                                location.reload(); // then reload the page.(3)
+                            }, 500);
+                    }
                 });
             }
         </script>
